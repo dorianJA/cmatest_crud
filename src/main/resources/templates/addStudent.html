@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add student</title>
+</head>
+<body>
+<form th:action="@{/save}" th:object="${newStudent}" method="post">
+    <p>First name:     <input type="text" name="firstName" />
+        <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name error</span>
+    </p>
+    <p>Last name:     <input type="text" name="lastName" />
+        <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name error</span>
+    </p>
+    <p>Middle name:     <input type="text" name="middleName" />
+        <span th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}">Name error</span>
+    </p>
+    <p>Date of birthday:     <input type="date" name="birthday_date" />
+
+    </p>
+    <p>Group name:     <input type="text" name="group.name" />
+
+    </p>
+    <input type="submit" value="Save student"> <br>
+</form>
+</body>
+</html>

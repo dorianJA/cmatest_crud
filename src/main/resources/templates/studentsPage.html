@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Students Page</title>
+</head>
+<body>
+<table border="1px">
+    <form th:action="@{/delete}"  method="get">
+        <input type="number" placeholder="Enter id.." name="id" >
+        <button type="submit">Delete student by id</button>
+    </form>
+    <tr>
+        <td>Student id</td>
+        <td>First name</td>
+        <td>Last name</td>
+        <td>Middle name</td>
+        <td>Group name</td>
+        <td>Birthday date</td>
+    </tr>
+
+    <th:block th:each="student : ${studentsList}">
+        <tr>
+            <td th:text="${student.id}"></td>
+            <td th:text="${student.firstName}"></td>
+            <td th:text="${student.lastName}"></td>
+            <td th:text="${student.middleName}"></td>
+            <td th:text="${student.group.name}"></td>
+            <td th:text="${student.birthday_date}"></td>
+<!--            <td><a th:href="@{/edit(id=${student.id})}">edit</a></td>-->
+            <td><a th:href="@{/delete(id=${student.id})}">delete</a ></td>
+        </tr>
+    </th:block>
+</table>
+<p><a th:href="@{/save}">Add student</a></p>
+</body>
+</html>
